@@ -116,9 +116,34 @@ for index, col in df.iterrows():
 #Görev 10: Fare'i 500'den büyük veya yaşı 70 den büyük yolcuların bilgilerini gösteriniz.
 
 for index, col in df.iterrows():
-    if col["fare"] > 500 and col["age"] > 70:
+    if col["fare"] > 500 or col["age"] > 70:
         print(col)
 
+#Görev 11: Her bir değişkendeki boş değerlerin toplamını bulunuz.
 
-#
-#
+print(df.isnull().sum())
+print(df.isnull().sum().sum())
+
+#Görev 12: who değişkenini dataframe’den çıkarınız.
+
+titanic_df_witout_who = df.drop("who", axis=1)
+#axis=1 parametresi ile bu sütunu dikey eksende (yani sütun olarak) çıkarmasını sağlarız. 
+print(titanic_df_witout_who.head())
+
+#Görev 13: deck değikenindeki boş değerleri deck değişkenin en çok tekrar eden değeri (mode) ile doldurunuz.
+mode_val = df['deck'].mode()[0]
+df_not_null_deck = df['deck'].fillna(mode_val)
+print(df_not_null_deck.head())
+
+#Görev 14: age değikenindeki boş değerleri age değişkenin medyanı ile doldurunuz.
+#Görev 15: survived değişkeninin pclass ve cinsiyet değişkenleri kırılımınında sum, count, mean değerlerini bulunuz.
+#Görev 16: 30 yaşın altında olanlar 1, 30'a eşit ve üstünde olanlara 0 vericek bir fonksiyon yazın. Yazdığınız fonksiyonu kullanarak titanik veri
+#setinde age_flag adında bir değişken oluşturunuz oluşturunuz. (apply ve lambda yapılarını kullanınız)
+#Görev 17: Seaborn kütüphanesi içerisinden Tips veri setini tanımlayınız.
+#Görev 18: Time değişkeninin kategorilerine (Dinner, Lunch) göre total_bill değerlerinin toplamını, min, max ve ortalamasını bulunuz.
+#Görev 19: Günlere ve time göre total_bill değerlerinin toplamını, min, max ve ortalamasını bulunuz.
+
+#Görev 20: Lunch zamanına ve kadın müşterilere ait total_bill ve tip değerlerinin day'e göre toplamını, min, max ve ortalamasını bulunuz.
+#Görev 21: size'i 3'ten küçük, total_bill'i 10'dan büyük olan siparişlerin ortalaması nedir? (loc kullanınız)
+#Görev 22: total_bill_tip_sum adında yeni bir değişken oluşturunuz. Her bir müşterinin ödediği totalbill ve tip in toplamını versin.
+#Görev 23: total_bill_tip_sum değişkenine göre büyükten küçüğe sıralayınız ve ilk 30 kişiyi yeni bir dataframe'e atayınız.
